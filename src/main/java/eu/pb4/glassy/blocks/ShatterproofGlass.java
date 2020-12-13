@@ -2,11 +2,13 @@ package eu.pb4.glassy.blocks;
 
 import eu.pb4.glassy.Glassy;
 import eu.pb4.glassy.other.UniversalRecipes;
+import net.devtech.arrp.json.recipe.*;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.GlassBlock;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -35,6 +37,13 @@ public class ShatterproofGlass {
         UniversalRecipes.addGlassPane("shatterproof_glass_pane",
                 new Identifier("glassy", "shatterproof_glass"),
                 new Identifier("glassy", "shatterproof_glass_pane"));
+
+        Glassy.RESOURCE_PACK.addRecipe(new Identifier("glassy", "glowing_glass"), JRecipe.shaped(
+                JPattern.pattern(" X ", "XYX", " X "),
+                JKeys.keys().key("X", JIngredient.ingredient().item(Items.OBSIDIAN))
+                        .key("Y", JIngredient.ingredient().item(Items.GLASS)),
+                JResult.itemStack(SHATTERPROOF_GLASS_ITEM, 1)));
+
     }
 
 }
